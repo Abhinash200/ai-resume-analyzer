@@ -9,16 +9,16 @@ from dotenv import load_dotenv
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 
-# Streamlit App UI
+# Streamlit UI
 st.set_page_config(page_title="AI Resume Analyzer", page_icon="🧠")
 st.title("🧠 AI Resume Analyzer (Groq LLM)")
 
-# File and Job Description Input
+# File and Job Description Inputs
 resume_file = st.file_uploader("📄 Upload Your Resume (PDF)", type=["pdf"])
 job_description = st.text_area("🧾 Paste Job Description Here")
 
-# Groq API Call Function (Safe)
-def call_groq(prompt, model="mixtral-8x7b-32768"):
+# Updated Groq API Function using llama3-70b-8192
+def call_groq(prompt, model="llama3-70b-8192"):
     if not groq_api_key:
         st.error("❌ API key not found. Please set GROQ_API_KEY in your .env file or Streamlit secrets.")
         return "API key missing."
@@ -45,26 +45,24 @@ def call_groq(prompt, model="mixtral-8x7b-32768"):
         st.error(f"❌ Request failed: {str(e)}")
         return "API request failed."
 
-# Main Analysis Logic
+# Main Logic
 if st.button("🚀 Analyze") and resume_file and job_description:
     with st.spinner("Analyzing your resume with Groq..."):
         resume_text = extract_text_from_pdf(resume_file)
 
-        # Generate first prompt and show for debugging (optional)
+        # Step 1: Extract resume info
         prompt1 = resume_prompt.format(resume_text=resume_text)
         st.subheader("🔍 Debug: Prompt to Extract Resume Info")
         st.code(prompt1, language="text")
-
         resume_info = call_groq(prompt1)
 
-        # Generate second prompt and show
+        # Step 2: Analyze fit with JD
         prompt2 = fit_prompt.format(resume_info=resume_info, job_description=job_description)
         st.subheader("🔍 Debug: Prompt to Evaluate Fit with JD")
         st.code(prompt2, language="text")
-
         fit_analysis = call_groq(prompt2)
 
-    # Display results
+    # Display Results
     st.subheader("📌 Extracted Resume Info")
     st.markdown(resume_info)
 
