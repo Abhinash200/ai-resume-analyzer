@@ -31,4 +31,13 @@ A Streamlit web app powered by Groq's LLMs that allows users to upload a resume 
 
 ## 📂 Folder Structure
 
-ai-resume-analyzer/ ├── app.py                      # Main Streamlit app ├── prompts.py                 # LLM prompt templates ├── utils.py                   # Resume extraction utilities ├── requirements.txt           # Python dependencies ├── .env                       # API key (Groq) └── assets
+ai-resume-analyzer/
+├── app.py                      # 🔷 Main Streamlit app
+├── prompts.py                  # 📄 LLM prompt templates (for extraction & scoring)
+├── utils.py                    # ⚙️ Utility functions (PDF parsing, formatting)
+├── requirements.txt            # 📦 Python package dependencies
+├── .env                        # 🔐 Environment variables (e.g., GROQ_API_KEY)
+├── assets/
+│   └── demo_screenshot.png     # 🖼️ Optional: for README/media
+├── README.md                   # 📘 Project documentation
+└── .gitignore                  # 🚫 Ignore files like .env, __pycache__, etc.
