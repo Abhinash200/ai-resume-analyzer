@@ -22,7 +22,7 @@ A Streamlit web app powered by Groq's LLMs that allows users to upload a resume 
 | Layer         | Tools Used                                |
 |---------------|--------------------------------------------|
 | Frontend      | Streamlit                                  |
-| LLM API       | Groq (`mixtral-8x7b-32768`)                |
+| LLM API       | Groq (`llama3-70b-8192`)                |
 | Resume Parsing| PyMuPDF                                    |
 | Backend       | Python, Requests, Prompt Templates         |
 | Secrets Mgmt  | Streamlit Secrets (`.env` not committed)   |
