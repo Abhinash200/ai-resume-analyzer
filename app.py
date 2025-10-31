@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY") 
 
 
 st.set_page_config(page_title="AI Resume Analyzer", page_icon="🧠")
@@ -18,7 +18,7 @@ resume_file = st.file_uploader("📄 Upload Your Resume (PDF)", type=["pdf"])
 job_description = st.text_area("🧾 Paste Job Description Here")
 
 
-def call_groq(prompt, model="llama-3.1-70b-versatile"):
+def call_groq(prompt, model="llama-3.3-70b-versatile"):
     if not groq_api_key:
         st.error("❌ API key not found. Please set GROQ_API_KEY in your .env file or Streamlit secrets.")
         return "API key missing."
