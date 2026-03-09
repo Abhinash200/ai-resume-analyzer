@@ -2,9 +2,6 @@
 
 A Streamlit web app powered by Groq's LLMs that allows users to upload a resume and job description, analyze the candidate's fit, extract key features, and get personalized suggestions—all using generative AI.
 
-![Streamlit App Screenshot](https://placehold.co/800x400?text=AI+Resume+Analyzer+Demo)
-
----
 
 ## 🚀 Features
 
